@@ -1,2 +1,2 @@
-# Sample common package
+# horey package_2
 

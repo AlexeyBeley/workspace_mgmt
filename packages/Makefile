@@ -18,15 +18,18 @@ build_dir:
 venv_dir: build_dir
 	python3 -m venv ${VENV_DIR}
 
-build-%: venv_dir
-	echo $@
+copy-src-%: venv_dir
+	cp -r $(subst copy-src-,,$@) ${BUILD_DIR}
+
+build-%: venv_dir copy-src-%
 	source ${VENV_DIR}/bin/activate &&\
 	pip3 install -r $(subst build-,,$@)/requirements.txt
 
 test-%: build-%
 	echo $(subst test-,,$@) #target_name
-	#source ${VENV_DIR}/bin/activate &&\
-	#tox
+	source ${VENV_DIR}/bin/activate &&\
+	cd  ${BUILD_DIR}/$(subst test-,,$@) &&\
+	tox
 
 clear:
 	rm -rf ${VENV_DIR}/*

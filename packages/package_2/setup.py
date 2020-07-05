@@ -1,27 +1,26 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "dome9", "common"))
-#print(os.listdir(sys.path[0]))
-print(sys.path)
-from sample_package import __version__
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "horey", "common"))
 
-from setuptools import setup, find_packages
+from package_2 import __version__
+
+from setuptools import setup
+
 
 def readme():
-	with open('README.md') as f:
-		return f.read()
+    with open('README.md') as f:
+        return f.read()
 
 
-setup(
-	name='dome9.common.sample_package',
-	version=__version__,
-	description='Dome9 sample common package',
-	long_description=readme(),
-	author='Dome9 devops sre team',
-	author_email='d9ops@checkpoint.com',
-	license='MIT',
-	packages=["dome9.common.sample_package"],
-	include_package_data=True,
-	install_requires=[],
-	zip_safe=False)
+setup(name='horey.common.package_2',
+      version=__version__,
+      description='Horey package_2',
+      long_description=readme(),
+      author='Horey',
+      author_email='alexey.beley@gmail.com',
+      license='MIT',
+      packages=["horey.common.package_2"],
+      include_package_data=True,
+      install_requires=[],
+      zip_safe=False)
